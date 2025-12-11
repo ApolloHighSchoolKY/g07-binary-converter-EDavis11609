@@ -24,6 +24,11 @@ public class BinaryConverter
     	binaryValue=newBinary;
     }
 
+    public String getBinary()
+    {
+        return binaryValue;
+    }
+
     //Methods
     public int getValue()
     {
@@ -37,18 +42,38 @@ public class BinaryConverter
 
     public String toBinary()
     {
+        int count = 8;
+        int valTwo = value;
+        String convert = "";
     	//Convert the integer value to binary
+        while(count>0)
+        {
+            convert = (valTwo%2) + convert; 
 
+            valTwo/=2;
+            count--;
+        }
 
-    	return "";
+    	return "" + convert;
     }
 
     public int toDecimal()
     {
+        int x = value;
     	//Convert the binary value to decimal
-
-    	return 0;
+        for(int i =0; i<binaryValue.length();i++)
+        {
+            if(binaryValue.charAt(i)=='1')
+            {
+                x += Math.pow(2, binaryValue.length()-i);
+            }
+        
+        }
+    	return x;
     }
 
-
+    public String toString()
+    {
+        return "" + value;
+    }
 }
